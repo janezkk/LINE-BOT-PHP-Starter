@@ -13,7 +13,7 @@ if (!is_null($events['events'])) {
 	foreach ($events['events'] as $event) {
 		// Reply only when message sent is in 'text' format
 		if ($event['type'] == 'message' && $event['message']['type'] == 'text') {
-			 if(strpos($event['message']['text'], 'ขอวีขึ้น') !== false ){
+			 if( (strpos($event['message']['text'], $question) !== false) || (strpos($event['message']['text'], $question_one) !== false) ){
 				// Get text sent
 			//$text = $event['message']['text'];
 			// Get replyToken
