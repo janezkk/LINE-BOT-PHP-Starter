@@ -6,6 +6,7 @@ $content = file_get_contents('php://input');
 $events = json_decode($content, true);
 $question = 'ขอวีขึ้น';
 $question_one = 'ขอดีลเลอร์ขึ้น';
+$question_three = 'ขอหลักขึ้น';
 
 // Validate parsed JSON data
 if (!is_null($events['events'])) {
@@ -13,7 +14,9 @@ if (!is_null($events['events'])) {
 	foreach ($events['events'] as $event) {
 		// Reply only when message sent is in 'text' format
 		if ($event['type'] == 'message' && $event['message']['type'] == 'text') {
-			 if( (strpos($event['message']['text'], $question) !== false) || (strpos($event['message']['text'], $question_one) !== false) ){
+			 if( (strpos($event['message']['text'], $question) !== false) || 
+			    (strpos($event['message']['text'], $question_one) !== false) ||
+			   (strpos($event['message']['text'], $question_three) !== false) ){
 				// Get text sent
 			//$text = $event['message']['text'];
 			// Get replyToken
