@@ -18,13 +18,12 @@ if (!is_null($events['events'])) {
 			// Get replyToken
 			$replyToken = $event['replyToken'];
 			
-			 if((strpos($text, $question)) || strpos($text, $question_one))
-	    {
-		    $messages = [
+			 if((strpos($text, $question)) || strpos($text, $question_one)){
+		    		$messages = [
 				'type' => 'text',
-				'text' =>  $text
-			];
-	    }
+				'text' =>  'รับ'
+				];
+			 }
 
 			// Build message to reply back
 			$messages = [
