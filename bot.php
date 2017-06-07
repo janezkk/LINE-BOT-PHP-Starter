@@ -1,28 +1,15 @@
 <?php
 $access_token = 'sgHZOo4379t9s5WSgkFv+mYMhkrP1+6tyuuxr1TX6ybPiGLaMdGgQeEgJkl7GPehTqOW5FVgRba2MQmrNses4bR0Bk0DqzGMLadYC3kjg90CLDMPtkd4KYjL0QF74AHg0/bYw42omtBck4CHAL1zNAdB04t89/1O/w1cDnyilFU=';
-
 // Get POST body content
 $content = file_get_contents('php://input');
 // Parse JSON
 $events = json_decode($content, true);
-
-$question = 'ขอวีขึ้น';
-$question_one = 'ขอดีลเลอร์ขึ้น';
-
 // Validate parsed JSON data
 if (!is_null($events['events'])) {
 	// Loop through each event
 	foreach ($events['events'] as $event) {
 		// Reply only when message sent is in 'text' format
-    if ($event['type'] == 'message' && $event['message']['type'] == 'text') {
-	    
-	    if((strpos($event['message']['text'], $question)) || strpos($event['message']['text'], $question_one))
-	    {
-		    $messages = [
-				'type' => 'text',
-				'text' =>  $text
-			];
-	    }
+		if ($event['type'] == 'message' && $event['message']['type'] == 'text') {
 			// Get text sent
 			$text = $event['message']['text'];
 			// Get replyToken
