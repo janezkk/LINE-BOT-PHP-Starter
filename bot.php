@@ -14,8 +14,16 @@ if (!is_null($events['events'])) {
 	// Loop through each event
 	foreach ($events['events'] as $event) {
 		// Reply only when message sent is in 'text' format
-    if ($event['type'] == 'message' && $event['message']['type'] == 'text' && (strpos($event['message']['text'], $question)) 
-	|| strpos($event['message']['text'], $question_one)) {
+    if ($event['type'] == 'message' && $event['message']['type'] == 'text') {
+	    
+	    if(&& (strpos($event['message']['text'], $question)) 
+	|| strpos($event['message']['text'], $question_one))
+	    {
+		    $messages = [
+				'type' => 'text',
+				'text' =>  $text
+			];
+	    }
 			// Get text sent
 			$text = 'รับ'
 			// Get replyToken
