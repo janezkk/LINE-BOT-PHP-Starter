@@ -4,6 +4,9 @@ $access_token = 'sgHZOo4379t9s5WSgkFv+mYMhkrP1+6tyuuxr1TX6ybPiGLaMdGgQeEgJkl7GPe
 $content = file_get_contents('php://input');
 // Parse JSON
 $events = json_decode($content, true);
+$question = 'ขอวีขึ้น';
+$question_one = 'ขอดีลเลอร์ขึ้น';
+
 // Validate parsed JSON data
 if (!is_null($events['events'])) {
 	// Loop through each event
@@ -14,6 +17,14 @@ if (!is_null($events['events'])) {
 			$text = $event['message']['text'];
 			// Get replyToken
 			$replyToken = $event['replyToken'];
+			
+			 if((strpos($text, $question)) || strpos($text, $question_one))
+	    {
+		    $messages = [
+				'type' => 'text',
+				'text' =>  $text
+			];
+	    }
 
 			// Build message to reply back
 			$messages = [
