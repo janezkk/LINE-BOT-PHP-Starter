@@ -5,21 +5,26 @@ $access_token = 'sgHZOo4379t9s5WSgkFv+mYMhkrP1+6tyuuxr1TX6ybPiGLaMdGgQeEgJkl7GPe
 $content = file_get_contents('php://input');
 // Parse JSON
 $events = json_decode($content, true);
+
+$question = 'ขอวีขึ้น';
+$question_one = 'ขอดีลเลอร์ขึ้น';
+
 // Validate parsed JSON data
 if (!is_null($events['events'])) {
 	// Loop through each event
 	foreach ($events['events'] as $event) {
 		// Reply only when message sent is in 'text' format
-    if (strpos($event['type'] , 'message') !== false && $event['message']['type'] == 'text') {
+    if ($event['type'] == 'message' && $event['message']['type'] == 'text' && (strpos($event['message']['text'], $question)) 
+	|| strpos($event['message']['text'], $question_one)) {
 			// Get text sent
-			$text = $event['message']['text'];
+			$text = 'รับ'
 			// Get replyToken
 			$replyToken = $event['replyToken'];
 
 			// Build message to reply back
 			$messages = [
-				'type' => 'รับ',
-				'text' => 'เหรอ'
+				'type' => 'text',
+				'text' =>  $text
 			];
 
 			// Make a POST Request to Messaging API to reply to sender
