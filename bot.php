@@ -18,7 +18,7 @@ if (!is_null($events['events'])) {
 			// Get replyToken
 			$replyToken = $event['replyToken'];
 			
-			 if((strpos($text, $question)) || strpos($text, $question_one)){
+			 if(strpos($text, $question) !== false ){
 		    		$messages = [
 				'type' => 'text',
 				'text' =>  'รับ'
